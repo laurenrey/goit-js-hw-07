@@ -42,7 +42,7 @@ function onGalleryContainerClick(evt) {
 
   function onEscBtnClick(evt) {
     if (evt.code === "Escape") {
-      gallery.close(onEscBtnClick);
+      gallery.close();
       document.removeEventListener("keydown", onEscBtnClick);
     }
   }
