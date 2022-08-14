@@ -2,11 +2,11 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const galleryContainer = document.querySelector(".gallery");
-const gallaryCardsItems = createGallaryCardsItems(galleryItems);
+const galleryCardsItems = createGalleryCardsItems(galleryItems);
 
-galleryContainer.insertAdjacentHTML("beforeend", gallaryCardsItems);
+galleryContainer.insertAdjacentHTML("beforeend", galleryCardsItems);
 
-function createGallaryCardsItems(galleryItems) {
+function createGalleryCardsItems(galleryItems) {
   return galleryItems
     .map(({ original, preview, description }) => {
       return `
@@ -43,7 +43,6 @@ function onGalleryContainerClick(evt) {
   function onEscBtnClick(evt) {
     if (evt.code === "Escape") {
       gallery.close(onEscBtnClick);
-      console.log(evt);
       document.removeEventListener("keydown", onEscBtnClick);
     }
   }
