@@ -37,11 +37,14 @@ function onGalleryContainerClick(evt) {
   const gallery = basicLightbox.create(`
     <img src="${evt.target.dataset.source}" width="800" height="600">
 `);
-
+  document.addEventListener("keydown", onEscBtnClick);
   gallery.show();
-  galleryContainer.addEventListener("keydown", (evt) => {
+
+  function onEscBtnClick(evt) {
     if (evt.code === "Escape") {
-      gallery.close();
+      gallery.close(onEscBtnClick);
+      console.log(evt);
+      document.removeEventListener("keydown", onEscBtnClick);
     }
-  });
+  }
 }

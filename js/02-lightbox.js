@@ -17,8 +17,7 @@ function createGallaryCardsItems(galleryItems) {
             class="gallery__image"
             src="${preview}"
             data-source="${original}"
-            alt=""
-            title="${description}"
+            alt="${description}"
         />
         </a>
     </div>
@@ -28,4 +27,8 @@ function createGallaryCardsItems(galleryItems) {
     .join("");
 }
 
-new SimpleLightbox(".gallery a", {});
+new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+  captionPosition: "bottom",
+});
