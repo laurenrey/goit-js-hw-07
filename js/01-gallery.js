@@ -33,17 +33,24 @@ function onGalleryContainerClick(evt) {
   if (!evt.target.classList.contains("gallery__image")) {
     return;
   }
-
-  const gallery = basicLightbox.create(`
+  const gallery = basicLightbox.create(
+    `
     <img src="${evt.target.dataset.source}" width="800" height="600">
-`);
-  document.addEventListener("keydown", onEscBtnClick);
+`,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", onEscBtnClick);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", onEscBtnClick);
+      },
+    }
+  );
   gallery.show();
 
   function onEscBtnClick(evt) {
     if (evt.code === "Escape") {
       gallery.close();
-      document.removeEventListener("keydown", onEscBtnClick);
     }
   }
 }
